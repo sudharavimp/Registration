@@ -9,17 +9,39 @@ const Register = () => {
     const [confPassword, setConfPassword] = useState('');
     const [msg, setMsg] = useState('');
     const history = useHistory();
-
+let emailValid;
+let passwordValid;
     const Register = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/users', {
-                name: name,
-                email: email,
-                password: password,
-                confPassword: confPassword
-            });
-            history.push("/");
+            if (name!=='' && email!=='' && password!==''){
+                emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                passwordValid = password.length >= 6;
+                if (!emailValid && passwordValid){
+                    setMsg('Enter valid email');
+                }
+               else if (emailValid && !passwordValid){
+                    setMsg('Password must be greater than 6 characters');
+                }
+                else if (!emailValid && !passwordValid){
+                    setMsg('Enter valid email ,Password must be greater than 6 characters');
+                }
+                else if(emailValid && passwordValid){
+                    await axios.post('http://localhost:5000/users', {
+                        name: name,
+                        email: email,
+                        password: password,
+                        confPassword: confPassword
+                    });
+                    history.push("/");  
+                }
+                     
+                    
+            }
+            else{
+                setMsg('Empty fields are not allowed');
+            }
+           
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
@@ -28,7 +50,7 @@ const Register = () => {
     }
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero has-background-primary-light is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">

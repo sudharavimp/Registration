@@ -4,7 +4,10 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
-
+import HomeBody from "./components/HomeBody";
+import ViewMap from "./components/ViewMap";
+import Example from "./components/NavbarMain";  ///original navbar
+import Discover from "./components/Discover";
 function App() {
   return (
     <BrowserRouter>
@@ -16,8 +19,20 @@ function App() {
           <Register/>
         </Route>
         <Route path="/dashboard">
-          <Navbar/>
-          <Dashboard/>
+        <Dashboard/>
+        
+       
+        </Route>
+        <Route path="/Discover">
+        <Dashboard/>
+       
+    
+        </Route>
+        <Dashboard/>
+        <Route path="/ViewMap">
+      
+   <ViewMap />
+     
         </Route>
       </Switch>
     </BrowserRouter>

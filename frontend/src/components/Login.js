@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+        <section className="hero has-background-primary-light is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
@@ -43,9 +43,9 @@ const Login = () => {
                             <form  className="box">
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Email or Username</label>
+                                    <label className="label">Email</label>
                                     <div className="controls">
-                                        <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
